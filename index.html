@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【推しの子】Second Season｜YouTubeマーケティングの基礎知識 Day1</title>
+<style>
+:root{
+  --bg:#080811; --nav:#12131c; --ink:#fff; --gold:#d9aa52; --gold2:#ffe3a0;
+  --pink:#ee1768; --pink2:#ff5eac; --cyan:#5bdbff; --blue:#3b9bff; --purple:#a563ff;
+  --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+  --sans:"Noto Sans JP","Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:var(--sans);background:#070810;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(circle at 20% 5%,rgba(255,29,119,.18),transparent 25%),
+  radial-gradient(circle at 80% 6%,rgba(43,101,255,.16),transparent 25%),
+  linear-gradient(180deg,#080917,#0b0811 65%,#08080e)}
+.header-image-wrap{width:min(1524px,calc(100% - 12px));margin:0 auto;border-bottom:2px solid var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.35);background:#070810}
+.header-image{display:block;width:100%;height:auto}
+.page{width:min(1524px,calc(100% - 12px));margin:6px auto 20px;display:grid;grid-template-columns:310px minmax(0,1fr) 245px;gap:7px;align-items:start}
+.panel{border:1px solid var(--gold);background:linear-gradient(180deg,#15131a,#0a0a10);box-shadow:inset 0 0 0 2px rgba(255,229,169,.06),0 12px 26px rgba(0,0,0,.42)}
+.left,.right{position:sticky;top:6px;max-height:calc(100vh - 12px);overflow:auto}
+.panel-head{height:66px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--gold);background:linear-gradient(90deg,#171019,#0e1018)}
+.panel-head .crown{font-size:28px;color:var(--gold2)}
+.panel-head b{display:block;font-family:var(--serif);font-size:20px;color:var(--gold2)}
+.panel-head small{display:block;margin-top:3px;font-size:10px;color:#efe9f3}
+.menu{padding:7px;min-height:800px;background:radial-gradient(circle at 50% 28%,rgba(255,25,112,.08),transparent 45%)}
+details.day{border:1px solid rgba(255,255,255,.62);background:linear-gradient(180deg,#191a26,#11121b);margin:0 0 7px}
+details.day>summary{list-style:none;cursor:pointer;min-height:57px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details.day>summary::-webkit-details-marker,details.half>summary::-webkit-details-marker{display:none}
+details.day>summary:after{content:"＋";font-size:22px;color:#fff}
+details.day[open]>summary:after{content:"−"}
+details.day[open]>summary{background:linear-gradient(90deg,#c90e50,#f41873);box-shadow:inset 0 0 17px rgba(255,255,255,.06)}
+.dayline{display:grid;grid-template-columns:65px 1fr;gap:5px;align-items:center}
+.daynum{font-family:var(--serif);font-size:23px;color:var(--gold2)}
+details.day[open] .daynum{color:#fff6c2}
+.daycopy strong{display:block;font-size:12px;line-height:1.25}.daycopy small{display:block;margin-top:3px;font-size:10px;color:#ddd7e3}
+.day-inside{padding:7px 8px 10px;background:#0a0b12;border-top:1px solid rgba(255,255,255,.11)}
+
+.half-links{padding:0}.half-links a,.half-note{display:block;padding:7px 8px;font-size:10px;color:#ddd7e3;text-decoration:none;border-left:3px solid transparent}
+.half-links a:hover{border-left-color:var(--pink);background:rgba(255,28,112,.09);color:#fff}.half-note{color:#8e8997}
+
+.center{border:1px solid var(--gold);background:#0a0a12;box-shadow:0 12px 28px rgba(0,0,0,.42)}
+.lessonbar{height:62px;display:grid;grid-template-columns:190px minmax(0,1fr) 285px;align-items:center;border-bottom:1px solid var(--gold);background:linear-gradient(90deg,#241329,#111633 58%,#13152a)}
+.ribbon{height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:25px;font-weight:900;background:linear-gradient(90deg,#ba1350,#ff1c76);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.lessonname{padding-left:22px;font-family:var(--serif);font-size:25px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lessonmsg{border-left:1px solid rgba(255,255,255,.17);padding:0 16px;font-size:11px;line-height:1.45;color:#e8e4f3}
+.intro{margin:7px;padding:18px;border:1px solid var(--gold);background:radial-gradient(circle at 82% 50%,rgba(255,32,132,.18),transparent 26%),linear-gradient(90deg,#101124,#090c1c)}
+.intro h2{font-family:var(--serif);margin:0 0 10px;font-size:22px}.intro p{margin:0;color:#ede9f4;line-height:1.9;font-size:14px}
+.goal{margin-top:12px;padding:12px 14px;border-left:5px solid var(--gold2);background:#171722;color:#fff0c8;font-weight:800}
+
+.section{margin:7px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(#151520,#0b0d16)}
+.section h3{margin:0;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.10);font-family:var(--serif);font-size:18px;background:linear-gradient(90deg,rgba(238,23,104,.16),transparent)}
+.inner{padding:16px;color:#eeeaf2;font-size:13px;line-height:1.85}.inner p{margin:0 0 12px}
+.lesson-img{display:block;width:100%;margin:0;border:1px solid rgba(255,255,255,.14)}
+.simple{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.simple div{padding:11px;border-radius:10px;background:#171725;border:1px solid rgba(255,255,255,.10)}
+.talk{margin:8px 0;padding:11px 13px;background:#171723;border-left:5px solid var(--speaker)}.talk b{color:var(--speaker)}.talk p{margin:4px 0 0}
+.practice-title{margin:16px 7px 7px;padding:16px 18px;border:1px solid var(--gold);background:linear-gradient(90deg,#2a1028,#11142c);font-family:var(--serif);font-size:22px;color:#fff}
+.practice-title span{color:#ff67ba}
+.source-box{margin:7px;padding:14px;border:1px solid rgba(255,255,255,.15);background:#10111b}
+.source-box summary{cursor:pointer;color:var(--gold2);font-weight:800}.source-box a{display:block;color:#9bdfff;margin:7px 0;text-decoration:none;font-size:11px;word-break:break-all}
+
+.cast{padding:7px}.cast-card{min-height:109px;margin-bottom:7px;display:grid;grid-template-columns:82px minmax(0,1fr);gap:9px;align-items:center;overflow:hidden;background:linear-gradient(100deg,#17101c,#0a0f1c);border:1px solid var(--accent)}
+.cast-card img{width:82px;height:107px;object-fit:cover;object-position:50% 18%;border-right:1px solid rgba(255,255,255,.15)}
+.cast-card .meta{padding-right:6px}.cast-card b{display:block;font-family:var(--serif);font-size:17px;color:var(--accent)}
+.cast-card span{display:block;margin-top:5px;color:#ddd6e4;font-size:9px;line-height:1.55}
+.aqua{--accent:#44b5ff}.ruby{--accent:#ff58a6}.kana{--accent:#ff748e}.akane{--accent:#59dfff}.mem{--accent:#ffd15e}
+.right-note{margin:7px;min-height:160px;padding:16px 12px;border:1px solid var(--gold);display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 100%,rgba(255,36,133,.20),transparent 38%),linear-gradient(#131325,#090a12);font-family:var(--serif);line-height:1.75}
+.right-note em{font-style:normal;color:#ff67ba;font-size:19px}
+
+@media(max-width:1180px){.page{grid-template-columns:250px minmax(0,1fr) 225px}.lessonbar{grid-template-columns:160px minmax(0,1fr)}.lessonmsg{display:none}}
+@media(max-width:900px){.header-image-wrap{width:min(100%,calc(100% - 8px))}.page{grid-template-columns:1fr}.left,.right{position:relative;top:auto;max-height:none}.left{order:1}.center{order:2}.right{order:3}.cast{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.cast-card{margin:0}}
+@media(max-width:620px){.lessonbar{grid-template-columns:120px minmax(0,1fr)}.ribbon{font-size:17px}.lessonname{font-size:17px;padding-left:10px}.simple{grid-template-columns:1fr}.cast{grid-template-columns:1fr}}
+
+/* ===== Day1 後半 ===== */
+.lessonbar.back-half{
+  margin-top:22px;
+  border-top:1px solid var(--gold);
+  background:linear-gradient(90deg,#2a1028,#101a3b 58%,#15162d);
+}
+.lessonbar.back-half .ribbon{
+  background:linear-gradient(90deg,#d0115a,#ff287f);
+}
+.back-intro{
+  margin:7px;
+  padding:18px;
+  border:1px solid var(--gold);
+  background:
+    radial-gradient(circle at 84% 48%,rgba(79,160,255,.14),transparent 27%),
+    radial-gradient(circle at 18% 50%,rgba(255,40,135,.15),transparent 25%),
+    linear-gradient(90deg,#111126,#0a0d1b);
+}
+.back-intro h2{
+  margin:0 0 10px;
+  font-family:var(--serif);
+  font-size:22px;
+}
+.back-intro p{
+  margin:0;
+  color:#ede9f4;
+  line-height:1.9;
+  font-size:14px;
+}
+.term{
+  color:var(--gold2);
+  font-weight:800;
+}
+.notice{
+  margin:12px 0;
+  padding:12px 14px;
+  border:1px dashed rgba(255,225,159,.45);
+  background:rgba(255,208,98,.06);
+  color:#fff1cc;
+  font-size:12px;
+  line-height:1.8;
+}
+.workflow-check{
+  display:grid;
+  gap:8px;
+  margin:12px 0;
+}
+.workflow-check div{
+  padding:10px 12px;
+  background:#171725;
+  border-left:4px solid var(--cyan);
+}
+
+</style>
+</head>
+<body>
+<header class="header-image-wrap">
+  <img src="top_header_image.png" alt="推しの子 Second Season ヘッダー" class="header-image">
+</header>
+
+<div class="page">
+  <aside class="left panel">
+    
+<div class="panel-head"><div class="crown">♛</div><div><b>講義メニュー</b><small>Day1 前半・後半</small></div></div>
+    <div class="menu">
+
+      <details class="day">
+        <summary>
+          <div class="dayline">
+            <div class="daynum">Day 1</div>
+            <div class="daycopy"><strong>AI・生成AI・Gemini 超入門</strong><small>前半</small></div>
+          </div>
+        </summary>
+        <div class="day-inside">
+          <div class="half-links">
+            <a href="#ai-basic">① AIと生成AI</a>
+            <a href="#llm">② LLMのしくみ</a>
+            <a href="#gemini">③ Geminiとプロンプト</a>
+            <a href="#safety">④ 実用・注意点・AIエージェント</a>
+            <a href="#practice">⑤ Gemini体験ワークフロー</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="day">
+        <summary>
+          <div class="dayline">
+            <div class="daynum">Day 1</div>
+            <div class="daycopy"><strong>YouTube運営・発信戦略</strong><small>後半</small></div>
+          </div>
+        </summary>
+        <div class="day-inside">
+          <div class="half-links">
+            <a href="#latecomer">① 後発でもチャンスがある理由</a>
+            <a href="#business-youtube">② 企業YouTubeは「信頼」が先</a>
+            <a href="#repeaters">③ 再生数よりリピーター</a>
+            <a href="#strategy-summary">④ 運営戦略まとめ</a>
+            <a href="#browser-workflow">⑤ Chromeを2画面にする</a>
+            <a href="#workflow-gemini">⑥ 左に手順・右にGemini</a>
+            <a href="#read-memo">⑦ まず読む・メモする</a>
+            <a href="#practice-summary">⑧ 実習まとめ</a>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </aside>
+
+  <main class="center">
+    <div class="lessonbar">
+      <div class="ribbon">Day 1　前半</div>
+      <div class="lessonname">AI・生成AI・Gemini 超入門</div>
+      <div class="lessonmsg">♛ 難しい言葉は後回し。<br>まず「使って分かる」を優先！</div>
+    </div>
+
+    <section class="intro">
+      <h2>まず、今日の結論</h2>
+      <p><b>AIは「何でも正しい答えを出す魔法」ではなく、文章作成・整理・画像生成・業務補助を一緒に行うアシスタント。</b> 頼み方で答えは変わるし、間違うこともある。だから「AIに下書きを作ってもらい、最後は人間が確認する」が基本です。</p>
+      <div class="goal">🎯 今日の目的：Geminiで「文章を作る → 画像を作る → 別の人向けに書き直す → 違いを比べる」を実際に体験する。</div>
+    </section>
+
+    <section class="section" id="ai-basic">
+      <h3>① AIの基本 ＋ 生成AI</h3>
+      <img class="lesson-img" src="ai_split_01.png" alt="AIの基本と生成AI">
+      <div class="inner">
+        <p>AIは、人間の知能をまねして「判断・予測・分類・文章作成」などを手伝う技術です。現在よく使われているのは、何でもできるAIというより、特定の作業が得意なAIです。</p>
+        <div class="simple"><div>🤖 AI：判断や予測を助ける</div><div>🎨 生成AI：文章・画像・音声・動画などを新しく作る</div></div>
+        <div class="talk" style="--speaker:#ff58a6"><b>ルビー</b><p>「AI＝ロボット」じゃないよ。文章を書いたり画像を作ったりするAIもあるんだね！</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="llm">
+      <h3>② LLMはどうやって文章を作る？</h3>
+      <img class="lesson-img" src="ai_split_02.png" alt="LLMの仕組み">
+      <div class="inner">
+        <p>LLMは、大量の文章を学習して、文脈から「次に来そうな言葉」を予測しながら文章を作ります。GPTシリーズやGeminiが代表例です。</p>
+        <div class="talk" style="--speaker:#44b5ff"><b>アクア</b><p>だから、自然な文章でも間違うことがある。数字や法律など大事な内容は確認が必要だ。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="gemini">
+      <h3>③ Geminiの基本 ＋ プロンプト4つのコツ</h3>
+      <img class="lesson-img" src="ai_split_03.png" alt="Geminiとプロンプトのコツ">
+      <div class="inner">
+        <p>検索みたいに単語を並べるより、「何をしてほしいか」を人に頼むように伝えます。最初から完璧な文章を書く必要はありません。</p>
+        <div class="simple">
+          <div>1️⃣ 雑なメモでもOK</div><div>2️⃣ 何に使うかを伝える</div>
+          <div>3️⃣ 文字数・雰囲気など条件を足す</div><div>4️⃣ 足りない情報は質問してもらう</div>
+        </div>
+        <div class="talk" style="--speaker:#ffd15e"><b>MEMちょ</b><p>「もっと短く」「やさしい言葉で」って追加で言えばいいよ。最初から100点の指示なんていらない！</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="safety">
+      <h3>④ 実用的な使い方・注意点・これからのAI</h3>
+      <img class="lesson-img" src="ai_split_04.png" alt="AIの実用例と注意点">
+      <div class="inner">
+        <div class="simple">
+          <div>✉️ メール・案内文の下書き</div><div>📄 PDF・長文の要約</div>
+          <div>📅 Todo・予定の整理</div><div>📱 音声入力・カメラ入力</div>
+        </div>
+        <p><b>注意：</b>AIの回答は鵜呑みにしない。機密情報や個人情報を安易に入れない。完成品ではなく「下書き」として使い、最後は人が確認します。</p>
+        <div class="talk" style="--speaker:#59dfff"><b>あかね</b><p>これからはAIが裏で作業を進める「AIエージェント」も増える。でも重要な操作は人間が確認する考え方が大事だね。</p></div>
+      </div>
+    </section>
+
+    <div class="practice-title" id="practice">🧪 <span>Geminiで実際にやってみよう</span> — 4ステップ</div>
+
+    <section class="section">
+      <h3>実習① 準備 ＋ コラム作成</h3>
+      <img class="lesson-img" src="practice_split_01.png" alt="Gemini実習1">
+      <div class="inner">
+        <p>GoogleアカウントでGeminiにログイン。テーマを「猫」「ラーメン」「紅葉」などから1つ選び、プロンプトをコピー＆貼り付けします。無料プランでは画像生成回数に上限がある点も覚えておきます。</p>
+        <div class="talk" style="--speaker:#ff58a6"><b>ルビー</b><p>まずはコピペでいい！「猫について、初心者向けに300字くらいで」と頼んでみよう。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>実習② 同じチャットで挿絵を作る</h3>
+      <img class="lesson-img" src="practice_split_02.png" alt="Gemini実習2">
+      <div class="inner">
+        <p>同じチャットのまま「画像を作成」を選び、「このコラムに挿入する挿絵を作成してください」と頼みます。前のコラム内容を踏まえた画像になるか見てみます。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>実習③ 同じ文章を別の人向けに書き直す</h3>
+      <img class="lesson-img" src="practice_split_03.png" alt="Gemini実習3">
+      <div class="inner">
+        <p>「コラムの内容を小学生向けに書き直してください」と依頼します。「高齢者向け」「SNS向け」「もっと短く」などへ変えてもOKです。</p>
+        <div class="talk" style="--speaker:#ff748e"><b>かな</b><p>誰向けかを変えるだけで、言葉づかいや文章の長さが変わる。そこを見比べて。</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>実習④ 最初と書き直した文章を比べる</h3>
+      <img class="lesson-img" src="practice_split_04.png" alt="Gemini実習4">
+      <div class="inner">
+        <div class="simple">
+          <div>👀 言葉づかい</div><div>🔤 難しい漢字や表現</div>
+          <div>📏 文章の長さ</div><div>✂️ 文の区切り方</div>
+        </div>
+        <p><b>ここが一番大事：</b>頼み方を変えるとAIの答えも変わります。結果を見ながら「もっと短く」「やさしい言葉で」と追加でお願いすると、希望に近づけられます。同じチャットを続けると、前の内容を踏まえて対応しやすくなります。</p>
+      </div>
+    </section>
+
+    <details class="source-box">
+      <summary>Day1前半の参考動画 5本</summary>
+      <a href="https://www.youtube.com/watch?v=WJ1R3D0ntf8&list=PLFnwYI-iUeuI" target="_blank" rel="noopener">AIとは？ 基礎：https://www.youtube.com/watch?v=WJ1R3D0ntf8&amp;list=PLFnwYI-iUeuI</a><a href="https://www.youtube.com/watch?v=KUNBWh9rprI&list=PLFnwYI-iUeuI&index=2" target="_blank" rel="noopener">生成AIとは？：https://www.youtube.com/watch?v=KUNBWh9rprI&amp;list=PLFnwYI-iUeuI&amp;index=2</a><a href="https://www.youtube.com/watch?v=YYx0zrIYS2o&list=PLFnwYI-iUeuI&index=3" target="_blank" rel="noopener">LLMとは？：https://www.youtube.com/watch?v=YYx0zrIYS2o&amp;list=PLFnwYI-iUeuI&amp;index=3</a><a href="https://www.youtube.com/watch?v=ckE0WoKYBmc&list=PLFnwYI-iUeuI&index=4" target="_blank" rel="noopener">Gemini入門：https://www.youtube.com/watch?v=ckE0WoKYBmc&amp;list=PLFnwYI-iUeuI&amp;index=4</a><a href="https://www.youtube.com/watch?v=bpPNiRsEPOk&list=PLFnwYI-iUeuI&index=5" target="_blank" rel="noopener">Gemini最新機能：https://www.youtube.com/watch?v=bpPNiRsEPOk&amp;list=PLFnwYI-iUeuI&amp;index=5</a>
+    </details>
+    <div class="lessonbar back-half" id="day1-back">
+      <div class="ribbon">Day 1　後半</div>
+      <div class="lessonname">YouTube運営・発信戦略</div>
+      <div class="lessonmsg">♛ 再生数だけを追わず、<br>「また見たい」を積み上げる。</div>
+    </div>
+
+    <section class="back-intro">
+      <h2>後半の結論：YouTubeは「たくさん出す競争」だけじゃない</h2>
+      <p>
+        今回の3本の動画では、初心者でも
+        <b>「誰に何を届けるか」「信頼をどう作るか」「次も見てもらうにはどうするか」</b>
+        を考えて運営することが大切だ、と説明されています。
+        <span class="term">バズ</span>（一気に再生数が増えること）だけではなく、
+        <span class="term">リピーター</span>（また見に来る人）や問い合わせにつながる流れを見る、という考え方です。
+      </p>
+      <div class="goal">🎯 後半の目的：YouTube運営の考え方を理解したあと、Chromeを2画面にして「左＝作業手順／右＝Gemini」の学習環境を作る。</div>
+    </section>
+
+    <section class="section" id="latecomer">
+      <h3>① 後発・初心者でもチャンスがある、という考え方</h3>
+      <img class="lesson-img" src="day1_back_01_latecomer_strategy.png" alt="後発でもチャンスがあるYouTube運営">
+      <div class="inner">
+        <p>
+          1本目の動画では、今のYouTubeは「昔から運営しているチャンネルだから必ず有利」というより、
+          <b>動画1本ごとの反応も重視されるため、新しい発信者にもチャンスがある</b>、と説明されています。
+        </p>
+        <div class="simple">
+          <div>🎬 チャンネル全体より「その動画が見たいか」</div>
+          <div>🧹 粗い量産動画より、自分の言葉・実体験</div>
+          <div>📺 スマホ以外にテレビ視聴も広がる</div>
+          <div>🧭 最初にジャンルと見る人を決める</div>
+        </div>
+        <div class="talk" style="--speaker:#ff58a6"><b>ルビー</b><p>「今から始めても遅い」って決めつけなくていいんだね。1本ずつちゃんと作れば勝負できる！</p></div>
+        <div class="talk" style="--speaker:#44b5ff"><b>アクア</b><p>ただし「1本目を完璧にするまで出さない」では止まる。設計は丁寧に、公開後は数字を見て改善する。</p></div>
+        <div class="notice">
+          ※提供された動画要約では、2027年2月から新規の収益化申請条件が厳しくなる、という説明があります。
+          このページでは動画内容として掲載しており、条件を利用する際はYouTube公式の最新情報も確認してください。
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="business-youtube">
+      <h3>② 企業YouTubeは「バズ」より「信頼と問い合わせ」</h3>
+      <img class="lesson-img" src="day1_back_02_business_youtube.png" alt="企業YouTubeの信頼と問い合わせ導線">
+      <div class="inner">
+        <p>
+          企業や仕事で使うYouTubeは、100万回再生を目標にする必要はありません。
+          <b>商品やサービスを本当に必要としている人に見てもらい、安心して相談してもらうこと</b>が大切です。
+        </p>
+        <div class="simple">
+          <div>🎯 先に「最終ゴール」を決める</div>
+          <div>🔁 売上 → 問い合わせ → 登録 → 動画、と逆算</div>
+          <div>🧠 役立つ情報＋人柄で信頼を作る</div>
+          <div>👉 CTA＝次にしてほしい行動を案内する</div>
+        </div>
+        <div class="talk" style="--speaker:#ff748e"><b>かな</b><p>「見て終わり」にしないことね。資料、相談、次の動画……次に何をしてほしいかを分かりやすく出す。</p></div>
+        <div class="talk" style="--speaker:#59dfff"><b>あかね</b><p>再生数だけじゃなく「押された？」「見続けた？」「問い合わせにつながった？」を分けて見ると原因が分かるよ。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="repeaters">
+      <h3>③ 再生数だけでなく「また見る人」を増やす</h3>
+      <img class="lesson-img" src="day1_back_03_repeaters.png" alt="YouTubeは再生数よりリピーター">
+      <div class="inner">
+        <p>
+          3本目の動画では、単発の大ヒットを追い続けるより、
+          <b>「次の動画も見る」「過去の動画も見る」人を少しずつ増やす</b>方が、
+          長く続くチャンネルになると説明されています。
+        </p>
+        <div class="simple">
+          <div>1️⃣ 最初は「内容」が好きで見てもらう</div>
+          <div>2️⃣ 何度も見るうちに「この人」が好きになる</div>
+          <div>📚 テーマをそろえて「次も役立つ」を作る</div>
+          <div>💬 コメントやアンケートで一緒に作る</div>
+        </div>
+        <div class="talk" style="--speaker:#ffd15e"><b>MEMちょ</b><p>最初から自分語り全開じゃなくてOK！まず「見た人の役に立つ」が入口だよ♪</p></div>
+        <div class="talk" style="--speaker:#59dfff"><b>あかね</b><p>失敗や迷い、どう直したかも見せると、人間味が出て「また見たい」につながりやすいね。</p></div>
+        <div class="notice">
+          ※再生数カウント仕様などの時点情報も、ここでは提供された動画要約の内容として整理しています。
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="strategy-summary">
+      <h3>④ 3本をまとめると「誰に・何を・どう続けるか」</h3>
+      <img class="lesson-img" src="day1_back_04_strategy_summary.png" alt="YouTube運営戦略のまとめ">
+      <div class="inner">
+        <p><b>難しく考えなくて大丈夫。</b> 最初にこの4つだけ決めれば、運営がかなり迷いにくくなります。</p>
+        <div class="workflow-check">
+          <div>① <b>誰に：</b>どんな悩みの人に見てほしい？</div>
+          <div>② <b>何を：</b>その人にどんな役立つ情報を渡す？</div>
+          <div>③ <b>次に：</b>見たあと、次の動画・相談・資料など何につなぐ？</div>
+          <div>④ <b>続ける：</b>再生数だけでなく、リピーターや反応を見ながら直す。</div>
+        </div>
+        <div class="talk" style="--speaker:#44b5ff"><b>アクア</b><p>設計は丁寧に。ただし撮影機材や編集を豪華にしすぎて止まる必要はない。出して、数字を見て、直す。</p></div>
+        <div class="talk" style="--speaker:#ff58a6"><b>ルビー</b><p>「100本出さなきゃ！」じゃなくて「次も見たい1本を積み上げる！」って覚えればいいね。</p></div>
+      </div>
+    </section>
+
+    <details class="source-box">
+      <summary>Day1後半・YouTube運営戦略の参考動画 3本</summary>
+      <a href="https://www.youtube.com/watch?v=WG68uqZE2tY&list=PLZhmdARXpeB0&index=1" target="_blank" rel="noopener">後発・初心者向けYouTube戦略</a>
+      <a href="https://www.youtube.com/watch?v=sTT1Wj-Xq4E&list=PLZhmdARXpeB0&index=2" target="_blank" rel="noopener">企業YouTube・売上につなげる導線設計</a>
+      <a href="https://www.youtube.com/watch?v=Env5kJ7rfUs&list=PLZhmdARXpeB0&index=3" target="_blank" rel="noopener">再生数よりリピーターを増やす運営</a>
+    </details>
+
+    <div class="practice-title" id="browser-workflow">🖥️ <span>後半実習：Chromeを2画面にして、YouTubeチャンネルづくりの流れを見る</span></div>
+
+    <section class="section">
+      <h3>実習① Chromeを開いて、2画面にする</h3>
+      <img class="lesson-img" src="day1_back_05_chrome_splitview.png" alt="Chromeを開いて分割ビューにする">
+      <div class="inner">
+        <p>まずChromeブラウザを開きます。新しいタブを作り、タブを右クリックして「新しい分割ビューにタブを追加」を選びます。</p>
+        <div class="talk" style="--speaker:#ff58a6"><b>ルビー</b><p>ここは準備だけ！難しい作業はまだしないから、順番どおりで大丈夫。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="workflow-gemini">
+      <h3>実習② 左にワークフロー、右にGemini</h3>
+      <img class="lesson-img" src="day1_back_06_workflow_gemini.png" alt="左にワークフロー、右にGemini">
+      <div class="inner">
+        <p>
+          左側に「チャンネルづくりワークフロー」を表示し、右側にGeminiを開きます。
+          <b>左＝作業の地図、右＝分からないことを聞くAI</b>と考えると分かりやすいです。
+        </p>
+        <div class="talk" style="--speaker:#59dfff"><b>あかね</b><p>片方だけを何度も行ったり来たりするより、2画面で並べた方が迷いにくいね。</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="read-memo">
+      <h3>実習③ 今日は「作る」より、まず読む・メモする</h3>
+      <img class="lesson-img" src="day1_back_07_read_and_memo.png" alt="ワークフローを順番に読みメモする">
+      <div class="inner">
+        <p>
+          この段階では、チャンネルを完成させる必要はありません。
+          ワークフローを飛ばさず順番に読み、<b>「今月はこういう順番で進むんだ」</b>と全体像をつかみます。
+        </p>
+        <div class="simple">
+          <div>👀 まず読む</div><div>📝 大事な所をメモ</div>
+          <div>❓ 分からない所を残す</div><div>🤖 後でGeminiに聞く</div>
+        </div>
+        <div class="talk" style="--speaker:#ffd15e"><b>MEMちょ</b><p>チャット履歴をずーっと遡るより、ノートに短く書いとくと次がラクだよ！</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="practice-summary">
+      <h3>実習④ 今日の実習を一言でまとめる</h3>
+      <img class="lesson-img" src="day1_back_08_practice_summary.png" alt="Day1後半の実習まとめ">
+      <div class="inner">
+        <p>
+          <b>Chromeを2画面に分けて、左に作業手順、右にGeminiを表示し、
+          まずYouTubeチャンネルづくりの全体の流れを理解する。</b>
+          これが今日の実習です。
+        </p>
+        <div class="goal">✅ 今日できれば十分：Chromeを2画面にできた／ワークフローを一通り読んだ／必要なところをメモできた。</div>
+        <div class="talk" style="--speaker:#ff748e"><b>かな</b><p>今日は「完成させる日」じゃないの。次から迷わないように地図を見る日。それで十分。</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="right panel">
+    <div class="panel-head"><div class="crown">♛</div><div><b>講師・登場キャラクター</b><small>Day1 前半・後半を5人で解説</small></div></div>
+    <div class="cast">
+      <article class="cast-card aqua"><img src="05_hoshino_aqua.png" alt="星野アクア"><div class="meta"><b>星野アクア</b><span>仕組み・数字・注意点<br>理屈をかみ砕く</span></div></article>
+      <article class="cast-card ruby"><img src="01_hoshino_ruby.png" alt="星野ルビー"><div class="meta"><b>星野ルビー</b><span>初心者目線<br>まず触ってみる担当</span></div></article>
+      <article class="cast-card kana"><img src="02_arima_kana.png" alt="有馬かな"><div class="meta"><b>有馬かな</b><span>文章の見せ方<br>書き直し・伝わり方</span></div></article>
+      <article class="cast-card akane"><img src="03_kurokawa_akane.png" alt="黒川あかね"><div class="meta"><b>黒川あかね</b><span>比較・分析<br>違いを観察する担当</span></div></article>
+      <article class="cast-card mem"><img src="04_memcho.png" alt="MEMちょ"><div class="meta"><b>MEMちょ</b><span>実践・プロンプト<br>楽しみながら試す担当</span></div></article>
+    </div>
+    <div class="right-note">前半はAI、後半はYouTube運営。<br><em>「分かる → 試す」</em><br>この順番でOK。♛</div>
+  </aside>
+</div>
+</body>
+</html>
